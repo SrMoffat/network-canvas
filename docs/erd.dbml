@@ -25,10 +25,14 @@ Table File {
   filename varchar
   fileType FileType
   content JSON
+  createdAt timestamp
+  updatedAt timestamp
 }
 Table Language {
   id integer [primary key]
   name varchar
+  createdAt timestamp
+  updatedAt timestamp
 }
 Ref: User.id < File.id
 Ref: User.language - Language.id
