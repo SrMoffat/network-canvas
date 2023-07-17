@@ -1,0 +1,34 @@
+// Database Model (Entity Relationship Diagram)
+// https://dbdiagram.io/d/64b4f52502bd1c4a5e2f5293
+enum Role {
+    participant [note: 'Research pariticpant']
+    user [note: 'Researcher']
+    admin [note: 'User with all priviledges']
+}
+enum Theme {
+    dark [note: 'User activated dark theme']
+    light [note: 'User activated light theme']
+}
+Table User {
+  id integer [primary key]
+  username varchar
+  email varchar
+  password varchar
+  role Role
+  theme Theme
+  language Language
+  createdAt timestamp
+  updatedAt timestamp
+}
+Table File {
+  id integer [primary key]
+  filename varchar
+  fileType FileType
+  content JSON
+}
+Table Language {
+  id integer [primary key]
+  name varchar
+}
+Ref: User.id < File.id
+Ref: User.language - Language.id
