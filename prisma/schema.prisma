@@ -16,6 +16,7 @@ model Role {
   description String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  users       User[]
 }
 
 model Theme {
@@ -24,6 +25,7 @@ model Theme {
   description String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  users       User[]
 }
 
 model Language {
@@ -31,6 +33,7 @@ model Language {
   name      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  User      User[]
 }
 
 model File {
@@ -43,13 +46,16 @@ model File {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  username String
-  email    String @unique
-  password String
-  // role
-  // theme
-  // language
+  id         Int    @id @default(autoincrement())
+  username   String
+  email      String @unique
+  password   String
+  roleId     Int
+  themeId    Int
+  languageId Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  role      Role     @relation(fields: [roleId], references: [id])
+  theme     Theme    @relation(fields: [themeId], references: [id])
+  language  Language @relation(fields: [languageId], references: [id])
 }
