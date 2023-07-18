@@ -6,13 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "prisma:format": "npx prisma format",
+    "prisma:studio": "npx prisma studio",
+    "prisma:migrate:deploy": "npx prisma migrate deploy"
   },
   "dependencies": {
     "@types/node": "20.4.2",
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.14",
+    "client-only": "^0.0.1",
     "daisyui": "^3.2.1",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.10",
@@ -20,7 +25,12 @@
     "postcss": "8.4.26",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "server-only": "^0.0.1",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "@prisma/client": "^5.0.0",
+    "prisma": "^5.0.0"
   }
 }
