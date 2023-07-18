@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint && npx prisma format"
+    "lint": "next lint",
+    "prisma:format": "npx prisma format",
+    "prisma:migrate:deploy": "npx prisma migrate deploy"
   },
   "dependencies": {
     "@types/node": "20.4.2",

@@ -1,7 +1,7 @@
-"use client"
+'use client';
 
 export default function Loading() {
-    return (
-        <h1>Opps! Something went wrong!</h1>
-    )
+  return (
+    <h1>Opps! Something went wrong!</h1>
+  );
 }
