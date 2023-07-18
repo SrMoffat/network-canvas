@@ -9,6 +9,7 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "prisma:format": "npx prisma format",
+    "prisma:studio": "npx prisma studio",
     "prisma:migrate:deploy": "npx prisma migrate deploy"
   },
   "dependencies": {
