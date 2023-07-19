@@ -5,7 +5,8 @@ export const ThemeContext = createContext({});
 
 // @ts-ignore
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState('light');
+  // TODO: Set based on DB value
+  const [theme, setTheme] = useState('dark');
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };

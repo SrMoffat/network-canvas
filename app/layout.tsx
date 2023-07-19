@@ -3,8 +3,8 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-import { ThemeProvider } from './providers';
-import { Nav } from './components';
+import { Nav } from '@/app/components';
+import { ThemeProvider } from '@/app/providers';
 
 const font = Inter({ subsets: ['latin'] });
 
@@ -20,12 +20,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-    <body className={font.className}>
-        <Nav />
-      <div className="pb-20 pt-28">
-        {children}
-      </div>
-    </body>
-  </html>
+      <body className={font.className}>
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }
