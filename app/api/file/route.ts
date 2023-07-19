@@ -1,15 +1,15 @@
-console.log('GET /api/public');
+console.log('GET /api/file');
 
 import { NextResponse } from 'next/server';
 
-export async function GET() {
+export async function POST() {
   const data = {
     id: 2,
     name: 'Test',
     type: '.json',
     content: '{some: "data"}',
     createdAt: 'hehehe',
-    updatedAt: 'gahahaha',
+    updatedAt: 'Admin',
 
   };
 
