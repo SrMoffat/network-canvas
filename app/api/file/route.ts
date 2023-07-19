@@ -1,4 +1,4 @@
-console.log('GET /api/auth/login');
+console.log('GET /api/file');
 
 import { NextResponse } from 'next/server'
 

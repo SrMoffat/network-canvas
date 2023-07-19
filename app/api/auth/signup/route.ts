@@ -1,4 +1,4 @@
-console.log('GET /api/public');
+console.log('GET /api/auth/signup');
 
 import { NextResponse } from 'next/server'
 
@@ -12,6 +12,5 @@ export async function POST() {
         updatedAt: "Admin"
 
     }
-
     return NextResponse.json({ data })
 }

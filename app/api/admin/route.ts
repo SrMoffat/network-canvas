@@ -1,4 +1,4 @@
-console.log('GET /api/public');
+console.log('GET /api/admin');
 
 import { NextResponse } from 'next/server'
 
