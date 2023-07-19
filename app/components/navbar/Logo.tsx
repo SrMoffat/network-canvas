@@ -1,11 +1,10 @@
 'use client';
+import Image from 'next/image';
+
 import { useContext } from 'react';
+import { useRouter } from 'next/navigation';
 
 import { ThemeContext } from '@/app/providers';
-
-
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
 const Logo = () => {
   const router = useRouter();
@@ -27,3 +26,5 @@ const Logo = () => {
 };
 
 export default Logo;
+
+
