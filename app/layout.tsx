@@ -4,8 +4,9 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
 import { ThemeProvider } from './providers';
+import { Nav } from './components';
 
-const inter = Inter({ subsets: ['latin'] });
+const font = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Network Canvas',
@@ -19,11 +20,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
+    <body className={font.className}>
+        <Nav />
+      <div className="pb-20 pt-28">
+        {children}
+      </div>
+    </body>
+  </html>
   );
 }
