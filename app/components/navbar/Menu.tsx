@@ -1,8 +1,8 @@
 const NavBarMenu = () =>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
-      <li><a>Sign Up</a></li>
-      <li><a>Login</a></li>
+      <li><a href="/auth/signup">Sign Up</a></li>
+      <li><a href="/auth/login">Login</a></li>
     </ul>
   </div>
     ;
