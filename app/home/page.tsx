@@ -1,5 +1,6 @@
 'use client'
 import React, { useContext } from 'react';
+import Link from 'next/link';
 import { HiTranslate, HiChevronDown } from 'react-icons/hi';
 import { Logo, ThemeToggler } from '../components';
 import { ThemeContext } from '../providers';
@@ -21,7 +22,7 @@ export default function Home() {
             <Logo height="40" width="40" />
             <span className="pl-3 font-bold">Network Canvas</span>
           </div>
-          <div className="flex-none hidden lg:block">
+          <div className="flex-none lg:block">
             <ul className="menu menu-horizontal">
               <ThemeToggler handleChange={() => toggleTheme()} />
               <div className="flex-none pr-4">
@@ -41,26 +42,22 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="dropdown dropdown-end">
-                  <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                  <label tabIndex={0} className="btn btn-ghost btn-circle avatar ">
                     <div className="w-10 rounded-full">
                       <img src="/images/dark.jpg" />
                     </div>
                   </label>
                   <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                    <li>
+                    <div className="px-4 py-2 font-bold">Jane Does</div>
+                    <div className="divider p-0 m-0" />
+                    <li onClick={() => console.log("Clicked Role")}>
                       <a className="justify-between">
                         Role
-                        <span className="badge">New</span>
+                        <div className="badge badge-outline badge-info ">Participant</div>
                       </a>
-                      <ul>
-                        <li>Participant</li>
-                        <li>User</li>
-                        <li>Admin</li>
-                      </ul>
-
                     </li>
-                    <li><a>Settings</a></li>
-                    <li><a>Logout</a></li>
+                    <Link legacyBehavior href="/home"><li><a>Profile</a></li></Link>
+                    <li onClick={() => console.log("Clicked Logout")}><a>Logout</a></li>
                   </ul>
                 </div>
               </div>
