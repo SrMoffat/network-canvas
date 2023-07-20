@@ -2,7 +2,7 @@ import React from 'react';
 import { AuthNav, AuthNavDrawer } from '../components';
 import { AiOutlinePaperClip, AiOutlineHome, AiOutlineCloudDownload, AiOutlineDelete, AiOutlineUser } from 'react-icons/ai';
 
-const Breadcrumbs = () => (
+const Breadcrumbs = () =>
   <div className="text-sm breadcrumbs">
     <ul>
       <li>
@@ -20,9 +20,9 @@ const Breadcrumbs = () => (
       <li />
     </ul>
   </div>
-);
+;
 
-const FilesPageContent = () => (
+const FilesPageContent = () =>
   <div className="px-6">
     <Breadcrumbs />
     <div className="flex flex-col w-full py-4">
@@ -59,7 +59,7 @@ const FilesPageContent = () => (
                   <AiOutlineCloudDownload size="20" />
                 </button>
                 <button className="btn mr-2">
-                  <AiOutlineDelete size="20" style={{ color: "red" }} />
+                  <AiOutlineDelete size="20" style={{ color: 'red' }} />
                 </button>
               </td>
             </tr>
@@ -82,7 +82,7 @@ const FilesPageContent = () => (
                   <AiOutlineCloudDownload size="20" />
                 </button>
                 <button className="btn mr-2">
-                  <AiOutlineDelete size="20" style={{ color: "red" }} />
+                  <AiOutlineDelete size="20" style={{ color: 'red' }} />
                 </button>
               </td>
             </tr>
@@ -105,7 +105,7 @@ const FilesPageContent = () => (
                   <AiOutlineCloudDownload size="20" />
                 </button>
                 <button className="btn mr-2">
-                  <AiOutlineDelete size="20" style={{ color: "red" }} />
+                  <AiOutlineDelete size="20" style={{ color: 'red' }} />
                 </button>
               </td>
             </tr>
@@ -128,7 +128,7 @@ const FilesPageContent = () => (
                   <AiOutlineCloudDownload size="20" />
                 </button>
                 <button className="btn mr-2">
-                  <AiOutlineDelete size="20" style={{ color: "red" }} />
+                  <AiOutlineDelete size="20" style={{ color: 'red' }} />
                 </button>
               </td>
             </tr>
@@ -138,7 +138,7 @@ const FilesPageContent = () => (
 
     </div>
   </div>
-);
+;
 export default function Files() {
   return (
     <div className="drawer">

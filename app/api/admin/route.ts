@@ -1,5 +1,3 @@
-console.log('GET /api/admin');
-
 import { NextResponse } from 'next/server';
 
 export async function GET() {

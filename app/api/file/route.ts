@@ -1,5 +1,3 @@
-console.log('GET /api/file');
-
 import { NextResponse } from 'next/server';
 
 export async function POST() {
