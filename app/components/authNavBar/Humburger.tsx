@@ -1,6 +1,6 @@
-import { AiOutlinePaperClip } from 'react-icons/ai'
+import { AiOutlinePaperClip } from 'react-icons/ai';
 
-const Content = () => (
+const Content = () =>
   <div className="flex justify-center w-full py-6">
     <AiOutlinePaperClip className="h-12 w-7 pr-1 flex-shrink-0" aria-hidden="true" />
     <input type="file" accept="application/JSON" className="file-input file-input-bordered w-full max-w-xs" />
@@ -8,13 +8,12 @@ const Content = () => (
       <div className="badge badge-outline">2.4mb</div>
     </div>
   </div>
-);
+;
 
 const HumburgerMenu = () => {
   const modalId = 'upload-file';
 
   const handleUploadFile = () => {
-    console.log("Upload file");
   };
   return (
     <div className="flex-none">
@@ -33,7 +32,7 @@ const HumburgerMenu = () => {
       </label>
       <label htmlFor={modalId} className="btn modal-button">Upload File</label>
     </div>
-  )
+  );
 };
 
 export default HumburgerMenu;
