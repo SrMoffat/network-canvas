@@ -6,7 +6,8 @@ import { useRouter } from 'next/navigation';
 
 import { ThemeContext } from '@/app/providers';
 
-const Logo = () => {
+// @ts-ignore
+const Logo = (props) => {
   const router = useRouter();
   // @ts-ignore
   const { theme } = useContext(ThemeContext);
@@ -21,6 +22,7 @@ const Logo = () => {
       height="70"
       width="70"
       alt="Logo"
+      {...props}
     />
   );
 };
