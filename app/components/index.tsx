@@ -6,6 +6,8 @@ export { default as Logo } from './navbar/Logo';
 export { default as Loader } from './info/Loader';
 export { default as InfoTitle } from './info/Title';
 export { default as CtaButton } from './info/Button';
+export { default as AuthNav } from './authNavBar/Nav';
 export { default as InfoHeader } from './info/Header';
 export { default as InfoContent } from './info/Content';
+export { default as AuthNavDrawer } from './authNavBar/Drawer';
 export { default as ThemeToggler } from './theme/ThemeToggler';
