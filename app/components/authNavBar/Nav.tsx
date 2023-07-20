@@ -14,7 +14,7 @@ const AuthenticatedNav = () => {
     const { toggleTheme } = useContext(ThemeContext);
     return (
       (
-        <div className="w-full navbar bg-base-300">
+        <div className="w-full navbar bg-base-300 shadow-md">
           <HumburgerMenu />
           <HeaderLogo classNames="flex-1 px-2 mx-2" />
           <div className="flex-none lg:block">
