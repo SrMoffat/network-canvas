@@ -31,3 +31,44 @@ export const SEED_USERS = [
     password: '12345678Qq!',
   },
 ];
+export const SEED_LANGUAGES = [
+  {
+    name: 'English',
+    code: 'en-US',
+  },
+  {
+    name: 'English',
+    code: 'en-GB',
+  },
+  {
+    name: 'Spanish',
+    code: 'es-ES',
+  },
+  {
+    name: 'Portuguese',
+    code: 'pt-BR',
+  },
+  {
+    name: 'French',
+    code: 'fr-CA',
+  },
+  {
+    name: 'Chinese',
+    code: 'zh-TW',
+  },
+];
+export const SEED_ROLES = [
+  {
+    name: 'participant',
+    description: 'Research pariticpant',
+  },
+  {
+    name: 'user',
+    description: 'Researcher',
+  },
+  {
+    name: 'admin',
+    description: 'User with all priviledges',
+  },
+];
+export const SEED_THEMES = ['dark', 'light'];
