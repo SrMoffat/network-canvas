@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-const SEED_THEMES = require('./lib/constants')
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,6 +7,6 @@ module.exports = {
   ],
   plugins: [require("daisyui")],
   daisyui: {
-    themes: SEED_THEMES,
+    themes: ["light", "dark"],
   },
 };

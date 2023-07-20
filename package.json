@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
+    "db:seed": "npx ts-node lib/seed.ts",
     "prisma:format": "npx prisma format",
     "prisma:studio": "npx prisma studio",
     "prisma:migrate:deploy": "npx prisma migrate deploy"
