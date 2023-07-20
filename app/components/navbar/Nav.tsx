@@ -1,7 +1,4 @@
 'use client';
-
-import React from 'react';
-
 import NavBarMenu from '@/app/components/navbar/Menu';
 import NavBarButton from '@/app/components/navbar/Button';
 import LogoContainer from '@/app/components/navbar/Container';
