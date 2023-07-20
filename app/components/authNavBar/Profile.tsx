@@ -20,7 +20,7 @@ const UserMenuSelector = () =>
   <div className="dropdown dropdown-end">
     <label tabIndex={0} className="btn btn-ghost btn-circle avatar ">
       <div className="w-10 rounded-full">
-        <Image alt="Profile" src="/images/dark.jpg" />
+        <Image alt="Profile" src="/images/dark.jpg" width="50" height="50" />
       </div>
     </label>
     <UserDropdown />
