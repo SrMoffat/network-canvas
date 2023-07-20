@@ -7,7 +7,7 @@ import { AUTH_VALIDATION_ERRORS, PASSWORD_REGEX } from './constants';
 const { name, email, password } = AUTH_VALIDATION_ERRORS;
 
 const commonAuthFields = {
-  name: yup.string()
+  username: yup.string()
     .required(name.required)
     .min(2, name.invalid),
   email: yup.string()
