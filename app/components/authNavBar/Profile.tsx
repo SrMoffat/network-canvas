@@ -11,7 +11,7 @@ const UserDropdown = ({ user }: Profile) =>
     <li onClick={() => { }}>
       <a className="justify-between">
         Role
-        <div className="badge badge-outline badge-info ">Participant</div>
+        <div className="badge badge-outline badge-info ">{user?.roleName}</div>
       </a>
     </li>
     <Link legacyBehavior href="/home"><li><a>Profile</a></li></Link>

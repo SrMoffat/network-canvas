@@ -1,13 +1,34 @@
 import { Credentials } from '@/lib/types';
 
+const BASE_URL = 'http://localhost:3000';
+
 export async function loginUser(credentials: Credentials): Promise<any> {
   try {
-    const res = await fetch('http://localhost:3000/api/login', {
+    const res = await fetch(`${BASE_URL}/api/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        email: credentials?.email,
+        password: credentials?.password,
+      }),
+    });
+    return await res.json();
+  } catch (error) {
+    throw error;
+  }
+};
+
+export async function signUpUser(credentials: Credentials): Promise<any> {
+  try {
+    const res = await fetch(`${BASE_URL}/api/signup`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: credentials?.username,
         email: credentials?.email,
         password: credentials?.password,
       }),

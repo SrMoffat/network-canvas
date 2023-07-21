@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 
 export interface Credentials {
+    username?: string;
     email: string;
     password: string;
 }
@@ -37,7 +38,14 @@ export interface AvatarProps {
 export interface UserProfile {
     name: string;
     email: string;
-    image: string
+    image: string;
+    roleName: string;
+    roleDescription: string;
+    roleId: number | string;
+    languageName: string;
+    languageCode: string;
+    themeName: string;
+    themeId: string;
 }
 
 export interface Profile {

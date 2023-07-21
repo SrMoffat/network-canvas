@@ -3,8 +3,7 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import GithubProvider from 'next-auth/providers/github';
 
 import { loginUser } from '@/lib/api';
-import { fetchDefaultRole } from '@/lib';
-
+import { fetchDefaultLanguage, fetchDefaultRole, fetchDefaultTheme } from '@/lib';
 // @ts-ignore
 const handleLogin = async (credentials) => {
   const user = await loginUser({
@@ -28,7 +27,7 @@ const credentialsProvider = CredentialsProvider({
 });
 const githubProvider = GithubProvider({
   clientId: process.env.GITHUB_ID ?? '',
-  clientSecret: process.env.GITHUB_SECRET ?? ''
+  clientSecret: process.env.GITHUB_SECRET ?? '',
 });
 const handler = NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
@@ -37,19 +36,39 @@ const handler = NextAuth({
     githubProvider,
   ],
   callbacks: {
-    async jwt({ token }) {
-      let authToken = token
-      const defaultRole = await fetchDefaultRole()
-      return {
-        ...authToken,
-        roleName: defaultRole?.name,
-        roleId: defaultRole?.id,
-      };
+    async jwt({ token, user }) {
+      if(user){
+        const defaultRole = await fetchDefaultRole();
+        const defaultLanguage = await fetchDefaultLanguage();
+        const defaultTheme = await fetchDefaultTheme();
+        token.roleName = defaultRole?.name;
+        token.roleDescription = defaultRole?.description;
+        token.roleId = defaultRole?.id;
+        token.languageName = defaultLanguage?.name;
+        token.languageCode = defaultLanguage?.code;
+        token.themeName = defaultTheme?.name;
+        token.themeId = defaultTheme?.id;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      // @ts-ignore
+      session.user.roleName = token.roleName;
+      // @ts-ignore
+      session.user.roleId = token.roleId;
+      // @ts-ignore
+      session.user.roleDescription = token.roleDescription;
+      // @ts-ignore
+      session.user.languageName = token.languageName;
+      // @ts-ignore
+      session.user.languageCode = token.languageCode;
+      // @ts-ignore
+      session.user.themeName = token.themeName;
+      // @ts-ignore
+      session.user.themeId = token.themeId;
+      return session;
     },
   },
-  // pages: {
-  //   signIn: '/login'
-  // }
 });
 
 export { handler as GET, handler as POST };
