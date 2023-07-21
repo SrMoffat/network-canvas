@@ -19,7 +19,6 @@ export async function loginUser(credentials: Credentials): Promise<any> {
     throw error;
   }
 };
-
 export async function signUpUser(credentials: Credentials): Promise<any> {
   try {
     const res = await fetch(`${BASE_URL}/api/signup`, {
@@ -38,4 +37,16 @@ export async function signUpUser(credentials: Credentials): Promise<any> {
     throw error;
   }
 };
-
+export async function fetchUsers(): Promise<any> {
+  try {
+    const res = await fetch(`${BASE_URL}/api/admin`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    return await res.json();
+  } catch (error) {
+    throw error;
+  }
+};
