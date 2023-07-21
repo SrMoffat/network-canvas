@@ -51,3 +51,8 @@ export interface UserProfile {
 export interface Profile {
     user: UserProfile
 }
+export interface RequestBody {
+    email: string;
+    password: string
+}
+

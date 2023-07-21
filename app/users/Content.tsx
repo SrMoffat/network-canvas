@@ -1,10 +1,6 @@
-import Breadcrumbs from './Breadcrumbs';
-import { useSession } from 'next-auth/react';
-import { UserProfile } from '@/lib/types';
 import Image from 'next/image';
 
-
-
+import Breadcrumbs from './Breadcrumbs';
 
 const users = [
   {
@@ -14,7 +10,7 @@ const users = [
     roleDescription: '',
     themeName: 'dark',
     languageCode: 'es-SP',
-    avatarUrl: ''
+    avatarUrl: '',
 
   },
   {
@@ -24,7 +20,7 @@ const users = [
     roleDescription: '',
     themeName: 'light',
     languageCode: 'en-US',
-    avatarUrl: ''
+    avatarUrl: '',
 
   },
   {
@@ -34,7 +30,7 @@ const users = [
     roleDescription: '',
     themeName: 'light',
     languageCode: 'en-UK',
-    avatarUrl: ''
+    avatarUrl: '',
 
   },
 ];
@@ -103,7 +99,7 @@ const UsersPageContent = () =>
         <div className="text-base place-self-start font-bold pl-4 pt-4">Users</div>
         <table className="table">
           <TableHeader />
-          {users?.map(user => <UserEntry user={user} />)}
+          {users?.map(user => <UserEntry key={user?.email} user={user} />)}
         </table>
       </div>
     </div>
