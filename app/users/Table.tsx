@@ -3,12 +3,12 @@
 import { useEffect, useState } from 'react';
 
 import { fetchUsers } from '@/lib/api';
+import Row from './Row';
 import TableHeader from './Header';
 import { UserData } from '@/lib/types';
 
 const TableRows = ({ users }: { users: UserData[] | undefined }) => {
-    console.log("users", users)
-    return users?.map(user => <div key={user?.email}>{user?.username}</div>)
+    return users?.map(user => <Row key={user?.email} user={user} />)
 }
 
 const UsersList = () => {
@@ -20,13 +20,16 @@ const UsersList = () => {
         };
         getUsers();
     }, []);
-
     return (
         <table className="table">
             <TableHeader />
-            <TableRows users={users} />
+            <tbody>
+                <TableRows users={users} />
+            </tbody>
         </table>
     );
 };
 
 export default UsersList;
+
+

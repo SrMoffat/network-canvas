@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { signOut } from 'next-auth/react';
 
 import { Profile } from '@/lib/types';
+import { getRoleBadgeColor } from '@/lib/roles';
 
 const UserDropdown = ({ user }: Profile) =>
   <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
@@ -11,7 +12,7 @@ const UserDropdown = ({ user }: Profile) =>
     <li onClick={() => { }}>
       <a className="justify-between">
         Role
-        <div className="badge badge-outline badge-info ">{user?.roleName}</div>
+        <div className={`badge badge-outline badge-${getRoleBadgeColor(user?.roleName)}`}>{user?.roleName}</div>
       </a>
     </li>
     <Link legacyBehavior href="/home"><li><a>Profile</a></li></Link>
@@ -33,3 +34,4 @@ const UserMenuSelector = ({ user }: Profile) =>
   ;
 
 export default UserMenuSelector;
+
