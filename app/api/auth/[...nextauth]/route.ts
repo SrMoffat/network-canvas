@@ -1,56 +1,47 @@
 import NextAuth from 'next-auth/next';
 import CredentialsProvider from 'next-auth/providers/credentials';
-// import GithubProvider from 'next-auth/providers/github';
+import GithubProvider from 'next-auth/providers/github';
 
+import { loginUser } from '@/lib/api';
 
 // @ts-ignore
 const handleLogin = async (credentials) => {
-  // Add logic here to look up the user from the credentials supplied
-  const res = await fetch('http://localhost:3000/api/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      email: credentials?.email,
-      password: credentials?.password,
-    }),
+  const user = await loginUser({
+    email: credentials?.email,
+    password: credentials?.password,
   });
-  const user = await res.json();
-
   if (user) {
     return user;
   } else {
     return null;
   }
 };
-
 const credentialsProvider = CredentialsProvider({
   name: 'Network Canvas',
   credentials: {
     username: { label: 'Username', type: 'text', placeholder: 'jsmith' },
+    email: { label: 'Email', type: 'email' },
     password: { label: 'Password', type: 'password' },
   },
   authorize: handleLogin,
 });
-// const githubProvider = GithubProvider({
-//   clientId: process.env.CLIENT_ID ?? '',
-//   clientSecret: process.env.CLIENT_SECRET ?? '',
-//   authorization: {
-//     params: {
-//       prompt: 'consent',
-//       access_type: 'offline',
-//       response_type: 'code',
-//     },
-//   },
-// });
-
+const githubProvider = GithubProvider({
+  clientId: process.env.GITHUB_ID ?? '',
+  clientSecret: process.env.GITHUB_SECRET ?? '',
+  authorization: {
+    params: {
+      prompt: 'consent',
+      access_type: 'offline',
+      response_type: 'code',
+    },
+  },
+});
 const handler = NextAuth({
   providers: [
     credentialsProvider,
-    // githubProvider
-
+    githubProvider
   ],
+  secret: process.env.NEXTAUTH_SECRET
 });
 
 export { handler as GET, handler as POST };
