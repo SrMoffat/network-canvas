@@ -2,8 +2,9 @@ import NextAuth from 'next-auth/next';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GithubProvider from 'next-auth/providers/github';
 
-import { fetchDefaults } from '@/lib';
 import { loginUser } from '@/lib/api';
+import { fetchDefaultRole } from '@/lib';
+
 // @ts-ignore
 const handleLogin = async (credentials) => {
   const user = await loginUser({
@@ -27,14 +28,7 @@ const credentialsProvider = CredentialsProvider({
 });
 const githubProvider = GithubProvider({
   clientId: process.env.GITHUB_ID ?? '',
-  clientSecret: process.env.GITHUB_SECRET ?? '',
-  // @ts-ignore
-  profile(profile) {
-    const { login, name, avatar_url, email } = profile;
-    // return { role: profile.role ?? "user", ...profile }
-    console.log('Profile', profile);
-    return profile;
-  },
+  clientSecret: process.env.GITHUB_SECRET ?? ''
 });
 const handler = NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
@@ -43,9 +37,14 @@ const handler = NextAuth({
     githubProvider,
   ],
   callbacks: {
-    async jwt({ token }){
-      token.role = 'participant';
-      return token;
+    async jwt({ token }) {
+      let authToken = token
+      const defaultRole = await fetchDefaultRole()
+      return {
+        ...authToken,
+        roleName: defaultRole?.name,
+        roleId: defaultRole?.id,
+      };
     },
   },
   // pages: {
