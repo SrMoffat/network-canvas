@@ -1,5 +1,3 @@
-console.log('GET /api/public');
-
 import { NextResponse } from 'next/server';
 
 export async function GET() {

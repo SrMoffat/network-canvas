@@ -11,7 +11,6 @@ const NavBarButton = () => {
   // @ts-ignore
   const { toggleTheme } = useContext(ThemeContext);
   const handleDownload = () => {
-    console.log("Handle download")
   };
   return (
     <div className="navbar-end">

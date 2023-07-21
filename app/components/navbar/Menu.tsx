@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const NavBarMenu = () => (
+const NavBarMenu = () =>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
       <Link href="/auth/signup" className="px-4">
@@ -11,5 +11,5 @@ const NavBarMenu = () => (
       </Link>
     </ul>
   </div>
-);
+;
 export default NavBarMenu;

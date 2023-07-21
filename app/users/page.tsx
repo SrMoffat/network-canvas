@@ -1,8 +1,8 @@
 import React from 'react';
 import { AuthNav, AuthNavDrawer } from '../components';
-import { AiOutlinePaperClip, AiOutlineHome, AiOutlineCloudDownload, AiOutlineDelete, AiOutlineUser } from 'react-icons/ai';
+import { AiOutlineHome, AiOutlineUser } from 'react-icons/ai';
 
-const Breadcrumbs = () => (
+const Breadcrumbs = () =>
   <div className="text-sm breadcrumbs">
     <ul>
       <li>
@@ -20,9 +20,9 @@ const Breadcrumbs = () => (
       <li />
     </ul>
   </div>
-);
+;
 
-const UsersPageContent = () => (
+const UsersPageContent = () =>
   <div className="px-6">
     <Breadcrumbs />
     <div className="flex flex-col w-full py-4">
@@ -167,7 +167,7 @@ const UsersPageContent = () => (
 
     </div>
   </div>
-);
+;
 export default function Users() {
   return (
     <div className="drawer">

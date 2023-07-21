@@ -1,4 +1,4 @@
-import { CtaButton, InfoContent, InfoTitle, InfoHeader } from "./components";
+import { CtaButton, InfoContent, InfoTitle, InfoHeader } from './components';
 
 export default function NotFound() {
   return (

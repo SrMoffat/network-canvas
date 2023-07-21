@@ -22,7 +22,6 @@ model Role {
 model Theme {
   id          Int      @id @default(autoincrement())
   name        String
-  description String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   users       User[]
@@ -31,6 +30,7 @@ model Theme {
 model Language {
   id        Int      @id @default(autoincrement())
   name      String
+  code      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   User      User[]
@@ -55,7 +55,7 @@ model User {
   languageId Int
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
-  role       Role     @relation(fields: [roleId], references: [id])
-  theme      Theme    @relation(fields: [themeId], references: [id])
-  language   Language @relation(fields: [languageId], references: [id])
+  role       Role?     @relation(fields: [roleId], references: [id])
+  theme      Theme?    @relation(fields: [themeId], references: [id])
+  language   Language? @relation(fields: [languageId], references: [id])
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { AiOutlineHome, AiOutlineDelete, AiOutlineCloudDownload } from 'react-icons/ai';
 import { AuthNav, AuthNavDrawer } from '../components';
 
-const Breadcrumbs = () => (
+const Breadcrumbs = () =>
   <div className="text-sm breadcrumbs">
     <ul>
       <li>
@@ -14,9 +14,9 @@ const Breadcrumbs = () => (
       <li />
     </ul>
   </div>
-);
+;
 
-const HomePageContent = () => (
+const HomePageContent = () =>
   <div className="px-6">
     <Breadcrumbs />
     <div className="flex flex-col w-full py-4">
@@ -93,7 +93,7 @@ const HomePageContent = () => (
                   <AiOutlineCloudDownload size="20" />
                 </button>
                 <button className="btn mr-2">
-                  <AiOutlineDelete size="20" style={{ color: "red"}} />
+                  <AiOutlineDelete size="20" style={{ color: 'red' }} />
                 </button>
               </td>
             </tr>
@@ -116,7 +116,7 @@ const HomePageContent = () => (
                   <AiOutlineCloudDownload size="20" />
                 </button>
                 <button className="btn mr-2">
-                  <AiOutlineDelete size="20" style={{ color: "red"}} />
+                  <AiOutlineDelete size="20" style={{ color: 'red' }} />
                 </button>
               </td>
             </tr>
@@ -139,7 +139,7 @@ const HomePageContent = () => (
                   <AiOutlineCloudDownload size="20" />
                 </button>
                 <button className="btn mr-2">
-                  <AiOutlineDelete size="20" style={{ color: "red"}} />
+                  <AiOutlineDelete size="20" style={{ color: 'red' }} />
                 </button>
               </td>
             </tr>
@@ -162,7 +162,7 @@ const HomePageContent = () => (
                   <AiOutlineCloudDownload size="20" />
                 </button>
                 <button className="btn mr-2">
-                  <AiOutlineDelete size="20" style={{ color: "red"}} />
+                  <AiOutlineDelete size="20" style={{ color: 'red' }} />
                 </button>
               </td>
             </tr>
@@ -171,7 +171,7 @@ const HomePageContent = () => (
       </div>
     </div>
   </div>
-);
+;
 export default function Home() {
   return (
     <div className="drawer">
