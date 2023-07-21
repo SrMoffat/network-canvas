@@ -13,6 +13,7 @@ export interface ThemeProviderProps {
 }
 export interface LanguageContextProps {
     language: string;
+    // eslint-disable-next-line no-unused-vars
     setLanguage: (lang: string) => void;
 }
 export interface LanguageProviderProps {
@@ -27,6 +28,7 @@ export interface InputProps {
     label: string;
     type: string;
     placeholder: string;
+    // eslint-disable-next-line no-unused-vars
     onChange: (event: any) => void;
 }
 export interface AvatarProps {

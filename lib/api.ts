@@ -14,7 +14,7 @@ export async function loginUser(credentials: Credentials): Promise<any> {
     });
     return await res.json();
   } catch (error) {
-    console.log('Error', error);
+    throw error;
   }
 };
 
