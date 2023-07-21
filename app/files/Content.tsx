@@ -21,7 +21,6 @@ const files = [
     uploadedAt: ' 21 July 2023',
     downloadUrl: '',
   },
-
 ];
 
 const FilesPageContent = () =>
