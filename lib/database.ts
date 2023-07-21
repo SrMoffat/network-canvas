@@ -1,4 +1,5 @@
 import { prisma } from '@/lib';
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
 export const conectionObject = (value: string | number | undefined) => {
   return {
@@ -16,9 +17,12 @@ export const fetchDefaultRole = async () => {
         },
       },
     });
-    return defaultRole
-  } catch (err) {
-    throw err;
+    return defaultRole;
+  } catch (err: any) {
+    throw new PrismaClientKnownRequestError(err?.message, {
+      code: 'P2002',
+      clientVersion: '',
+    });
   }
 };
 export const fetchDefaultLanguage = async () => {
@@ -30,9 +34,12 @@ export const fetchDefaultLanguage = async () => {
         },
       },
     });
-    return defaultLanguage
-  } catch (err) {
-    throw err;
+    return defaultLanguage;
+  } catch (err: any) {
+    throw new PrismaClientKnownRequestError(err?.message, {
+      code: 'P2002',
+      clientVersion: '',
+    });
   }
 };
 export const fetchDefaultTheme = async () => {
@@ -44,9 +51,12 @@ export const fetchDefaultTheme = async () => {
         },
       },
     });
-    return defaultTheme
-  } catch (err) {
-    throw err;
+    return defaultTheme;
+  } catch (err: any) {
+    throw new PrismaClientKnownRequestError(err?.message, {
+      code: 'P2002',
+      clientVersion: '',
+    });
   }
 };
 export const fetchDefaults = async () => {
@@ -59,20 +69,22 @@ export const fetchDefaults = async () => {
       role: defaultRole?.id,
       language: defaultLanguage?.id,
     };
-  } catch (err) {
-    throw err;
+  } catch (err: any) {
+    throw new PrismaClientKnownRequestError(err?.message, {
+      code: 'P2002',
+      clientVersion: '',
+    });
   }
 };
 
 // @ts-ignore
 export const createNewUser = async (data) => {
-  const defaults = await fetchDefaults()
+  const defaults = await fetchDefaults();
   const userExists = await prisma.user.findFirst({
     where: {
       email: data?.email,
     },
   });
-
   if (!userExists) {
     const user = await prisma.user.create({
       data: {
@@ -97,10 +109,11 @@ export const createNewUser = async (data) => {
         },
       },
     });
-
     return user;
   } else {
-    throw new Error('Something went wrong');
+    throw new PrismaClientKnownRequestError('User already exists', {
+      code: 'P2002',
+      clientVersion: '',
+    });
   }
-
 };

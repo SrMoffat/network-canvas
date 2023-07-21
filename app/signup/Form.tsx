@@ -2,11 +2,19 @@
 import Link from 'next/link';
 import { signIn } from 'next-auth/react';
 import { FormEvent, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { AiFillGithub } from 'react-icons/ai';
 
+import { signUpUser } from '@/lib/api';
 import { Input } from '@/app/components';
 
-const loginFormInputs = [
+const signUpFormInputs = [
+  {
+    type: 'text',
+    name: 'username',
+    label: 'Username',
+    placeholder: 'Jane Does',
+  },
   {
     type: 'email',
     name: 'email',
@@ -21,7 +29,7 @@ const loginFormInputs = [
   },
 ];
 
-const LoginButton = ({ loading, text }: { loading: boolean, text: string }) =>
+const SignupButton = ({ loading, text }: { loading: boolean, text: string }) =>
   <button className="btn w-full font-medium rounded-lg text-sm px-5 py-2.5 text-center">
     {loading ?
       <>
@@ -31,7 +39,8 @@ const LoginButton = ({ loading, text }: { loading: boolean, text: string }) =>
       : text}
   </button>
   ;
-const LoginWithGithubButton = ({ text, onClick }: { text: string, onClick: () => void }) => {
+
+const SignupWithGithubButton = ({ text, onClick }: { text: string, onClick: () => void }) => {
   return (
     <button className="btn w-full font-medium rounded-lg text-sm px-5 py-2.5 text-center" onClick={onClick}>
       <AiFillGithub size="25" />
@@ -39,31 +48,36 @@ const LoginWithGithubButton = ({ text, onClick }: { text: string, onClick: () =>
     </button>
   );
 };
+
 const FormFooter = () =>
   <p className="text-sm font-light">
-    {' Don\'t have an account?'}
+    Already have an account?
     <Link href="/signup" className="pl-1 font-medium text-primary-600 hover:underline dark:text-primary-500">
-      Signup
+      Login
     </Link>
   </p>
   ;
-const LoginForm = () => {
+
+const SignUpForm = () => {
   // TODO: Replace with React Hook Form
+  const { push } = useRouter();
+
   const [loading, setLoading] = useState<boolean>(false);
   const [formState, setFormState] = useState<{ [key: string]: string }>({});
 
-  const handleNormalLogin = async (event: FormEvent) => {
+  const handleNormalSignup = async (event: FormEvent) => {
     setLoading(true);
     event.preventDefault();
-    signIn('credentials', {
+    await signUpUser({
+      username: formState?.username,
       email: formState?.email,
       password: formState?.password,
-      callbackUrl: '/home',
     });
     setLoading(false);
-
+    // TODO: Create session and redirect to home
+    push('/login');
   };
-  const handleGithubLogin = () => {
+  const handleGithubSignUp = () => {
     signIn('github', {
       callbackUrl: '/home',
     });
@@ -78,17 +92,17 @@ const LoginForm = () => {
   };
   return (
     <>
-      <form onSubmit={handleNormalLogin} className="space-y-4 md:space-y-6" action="#">
-        {loginFormInputs.map(({ type, name, label, placeholder }) =>
+      <form onSubmit={handleNormalSignup} className="space-y-4 md:space-y-6" action="#">
+        {signUpFormInputs.map(({ type, name, label, placeholder }) =>
           <Input key={name} name={name} type={type} label={label} placeholder={placeholder} onChange={updateField} />
         )}
-        <LoginButton loading={loading} text="Login to Account" />
+        <SignupButton loading={loading} text="Create Account" />
       </form>
       <div className="divider">OR</div>
-      <LoginWithGithubButton text="Login with Github" onClick={handleGithubLogin} />
+      <SignupWithGithubButton text="Signup with Github" onClick={handleGithubSignUp} />
       <FormFooter />
     </>
   );
 };
 
-export default LoginForm;
+export default SignUpForm;

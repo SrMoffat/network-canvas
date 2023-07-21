@@ -29,15 +29,15 @@ const SEED_LANGUAGES = [
 const SEED_ROLES = [
   {
     name: 'participant',
-    description: 'Research pariticpant',
+    description: 'Research participant',
   },
   {
     name: 'user',
-    description: 'Researcher',
+    description: 'Researcher owning project',
   },
   {
     name: 'admin',
-    description: 'User with all priviledges',
+    description: 'Admin with priviledges',
   },
 ];
 const SEED_THEMES = ['dark', 'light'];
