@@ -1,11 +1,10 @@
 import * as bcrypt from 'bcrypt';
+
 import { omit } from 'lodash';
 import { NextResponse } from 'next/server';
+
 import { prisma } from '@/lib';
-interface RequestBody {
-    email: string;
-    password: string
-}
+import { RequestBody } from '@/lib/types';
 
 export async function POST(request: Request) {
   const body: RequestBody = await request.json();

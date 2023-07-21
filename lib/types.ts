@@ -47,7 +47,43 @@ export interface UserProfile {
     themeName: string;
     themeId: string;
 }
+export interface Role {
+    id: string | number;
+    name: string;
+    description: string;
+    createdAt: string;
+    updatedAt: string;
+}
+export interface Theme {
+    id: string | number;
+    name: string;
+    createdAt: string;
+    updatedAt: string;
+}
+export interface Language {
+    id: string | number;
+    name: string;
+    code: string;
+    createdAt: string;
+    updatedAt: string;
+}
+export interface UserData {
+    id: string | number;
+    username: string;
+    email: string;
+    avatar_url: string;
+    createdAt: string;
+    updatedAt: string;
+    language: Language;
+    theme: Theme;
+    role: Role;
+}
 
 export interface Profile {
     user: UserProfile
 }
+export interface RequestBody {
+    email: string;
+    password: string
+}
+

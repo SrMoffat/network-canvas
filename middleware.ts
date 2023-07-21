@@ -1,9 +1,3 @@
-// export { default } from "next-auth/middleware";
-
-// export const config = {
-//     matcher: ['/auth/admin', '/home', '/files', '/users']
-// };
-
 import { NextResponse } from "next/server";
 import { withAuth } from "next-auth/middleware";
 
@@ -26,4 +20,5 @@ export default withAuth(
     }
 )
 
-export const config = { matcher: ["/api/admin", "/files", "/users"] }
+export const config = { matcher: ["/files", "/users"] }
+// export const config = { matcher: ["/api/admin", "/files", "/users"] }

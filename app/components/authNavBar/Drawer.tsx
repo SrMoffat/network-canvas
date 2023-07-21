@@ -5,17 +5,17 @@ import HeaderLogo from '@/app/components/authNavBar/Logo';
 
 const links = [
   {
-    label: "Home",
-    href: "/home",
+    label: 'Home',
+    href: '/home',
   },
   {
-    label: "Files",
-    href: "/files",
+    label: 'Files',
+    href: '/files',
   },
   {
-    label: "Users",
-    href: "/users",
-  }
+    label: 'Users',
+    href: '/users',
+  },
 ];
 
 const SideDrawer = () =>
@@ -24,11 +24,11 @@ const SideDrawer = () =>
     <ul className="menu p-4 w-80 h-full bg-base-200">
       <HeaderLogo classNames="" />
       <div className="mt-5 px-4">
-        {links.map(({ label, href }) => (
-          <li>
+        {links.map(({ label, href }) =>
+          <li key={href}>
             <Link href={href}>{label}</Link>
           </li>
-        ))}
+        )}
       </div>
     </ul>
   </div>

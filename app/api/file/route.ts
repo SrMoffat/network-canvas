@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server';
+import { prisma } from '@/lib';
+
 
 export async function POST() {
   const data = {
@@ -14,15 +16,20 @@ export async function POST() {
   return NextResponse.json({ data });
 }
 export async function GET() {
-  const data = {
-    id: 2,
-    name: 'Test',
-    type: '.json',
-    content: '{some: "data"}',
-    createdAt: 'hehehe',
-    updatedAt: 'Admin',
-
-  };
-
-  return NextResponse.json({ data });
+  const files = await prisma.file.findMany({
+    include: {
+      user: {
+        select: {
+          id: true,
+          username: true,
+          email: true,
+          avatar_url: true,
+          // language: true,
+          // role: true,
+          // theme: true
+        }
+      }
+    },
+  });
+  return NextResponse.json({ data: files });
 }
