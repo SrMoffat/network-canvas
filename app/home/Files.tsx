@@ -1,5 +1,26 @@
 import { AiOutlineDelete, AiOutlineCloudDownload } from 'react-icons/ai';
 
+const files = [
+  {
+    fileName: 'sample_stuff.json',
+    size: '22.5mb',
+    uploadedAt: ' 23 July 2023',
+    downloadUrl: '',
+  },
+  {
+    fileName: 'research_participants.json',
+    size: '30.5mb',
+    uploadedAt: ' 22 July 2023',
+    downloadUrl: '',
+  },
+  {
+    fileName: 'sample_stuff.json',
+    size: '16.5mb',
+    uploadedAt: ' 21 July 2023',
+    downloadUrl: '',
+  },
+];
+
 // @ts-ignore
 export const UserFilesContainer = ({ children }) => {
   return (
@@ -23,98 +44,31 @@ export const UserFiles = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>
-            <div className="flex items-center space-x-3">
-              <div>
-                <div className="font-bold">sample_stuff.json</div>
-                <div className="text-sm opacity-50">22.5mb</div>
+        {files?.map(({ fileName, size, uploadedAt }) =>
+          <tr key={fileName}>
+            <td>
+              <div className="flex items-center space-x-3">
+                <div>
+                  <div className="font-bold">{fileName}</div>
+                  <div className="text-sm opacity-50">{size}</div>
+                </div>
               </div>
-            </div>
-          </td>
-          <td>
-              22 July 2023
-            <br />
-            <span className="badge badge-neutral badge-sm">2 days ago</span>
-          </td>
-          <td>
-            <button className="btn mr-2">
-              <AiOutlineCloudDownload size="20" />
-            </button>
-            <button className="btn mr-2">
-              <AiOutlineDelete size="20" style={{ color: 'red' }} />
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div className="flex items-center space-x-3">
-              <div>
-                <div className="font-bold">sample_stuff.json</div>
-                <div className="text-sm opacity-50">22.5mb</div>
-              </div>
-            </div>
-          </td>
-          <td>
-              22 July 2023
-            <br />
-            <span className="badge badge-neutral badge-sm">2 days ago</span>
-          </td>
-          <td>
-            <button className="btn mr-2">
-              <AiOutlineCloudDownload size="20" />
-            </button>
-            <button className="btn mr-2">
-              <AiOutlineDelete size="20" style={{ color: 'red' }} />
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div className="flex items-center space-x-3">
-              <div>
-                <div className="font-bold">sample_stuff.json</div>
-                <div className="text-sm opacity-50">22.5mb</div>
-              </div>
-            </div>
-          </td>
-          <td>
-              22 July 2023
-            <br />
-            <span className="badge badge-neutral badge-sm">2 days ago</span>
-          </td>
-          <td>
-            <button className="btn mr-2">
-              <AiOutlineCloudDownload size="20" />
-            </button>
-            <button className="btn mr-2">
-              <AiOutlineDelete size="20" style={{ color: 'red' }} />
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div className="flex items-center space-x-3">
-              <div>
-                <div className="font-bold">sample_stuff.json</div>
-                <div className="text-sm opacity-50">22.5mb</div>
-              </div>
-            </div>
-          </td>
-          <td>
-              22 July 2023
-            <br />
-            <span className="badge badge-neutral badge-sm">2 days ago</span>
-          </td>
-          <td>
-            <button className="btn mr-2">
-              <AiOutlineCloudDownload size="20" />
-            </button>
-            <button className="btn mr-2">
-              <AiOutlineDelete size="20" style={{ color: 'red' }} />
-            </button>
-          </td>
-        </tr>
+            </td>
+            <td>
+              {uploadedAt}
+              <br />
+              <span className="badge badge-neutral badge-sm">2 days ago</span>
+            </td>
+            <td>
+              <button className="btn mr-2">
+                <AiOutlineCloudDownload size="20" />
+              </button>
+              <button className="btn mr-2">
+                <AiOutlineDelete size="20" style={{ color: 'red' }} />
+              </button>
+            </td>
+          </tr>
+        )}
       </tbody>
     </table>
   );
