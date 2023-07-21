@@ -20,11 +20,11 @@ model Role {
 }
 
 model Theme {
-  id          Int      @id @default(autoincrement())
-  name        String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  users       User[]
+  id        Int      @id @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  users     User[]
 }
 
 model Language {
@@ -46,16 +46,17 @@ model File {
 }
 
 model User {
-  id         Int      @id @default(autoincrement())
-  username   String
-  email      String   @unique
-  password   String
-  roleId     Int
-  themeId    Int
-  languageId Int
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  role       Role?     @relation(fields: [roleId], references: [id])
-  theme      Theme?    @relation(fields: [themeId], references: [id])
-  language   Language? @relation(fields: [languageId], references: [id])
+  id             Int       @id @default(autoincrement())
+  username       String
+  email          String    @unique
+  password       String
+  profilePicture String    @default("/images/dark.jpg")
+  roleId         Int
+  themeId        Int
+  languageId     Int
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  role           Role?     @relation(fields: [roleId], references: [id])
+  theme          Theme?    @relation(fields: [themeId], references: [id])
+  language       Language? @relation(fields: [languageId], references: [id])
 }

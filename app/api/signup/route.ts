@@ -5,7 +5,7 @@ import { ValidationError } from 'yup';
 import { NextResponse } from 'next/server';
 
 import { userSignUpSchema } from '@/lib';
-import { createNewUser, fetchDefaults } from '@/app/api/signup/helpers';
+import { createNewUser, fetchDefaults } from '@/lib';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
 interface RequestBody {

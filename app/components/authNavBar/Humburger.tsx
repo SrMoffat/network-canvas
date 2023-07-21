@@ -14,7 +14,7 @@ const Content = () =>
 
 const HumburgerMenu = ({ user } : { user: UserProfile}) => {
   // TODO: check for user role
-  const isAdmin = user?.email === 'super2@superman.com'
+  const isAdmin = user?.email === 'super2@superman.com';
   const modalId = 'upload-file';
 
   const handleUploadFile = () => {
