@@ -3,8 +3,6 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import GithubProvider from 'next-auth/providers/github';
 
 import { loginUser } from '@/lib/api';
-import { fetchDefaultRole } from '@/lib';
-
 // @ts-ignore
 const handleLogin = async (credentials) => {
   const user = await loginUser({
@@ -28,7 +26,8 @@ const credentialsProvider = CredentialsProvider({
 });
 const githubProvider = GithubProvider({
   clientId: process.env.GITHUB_ID ?? '',
-  clientSecret: process.env.GITHUB_SECRET ?? ''
+  clientSecret: process.env.GITHUB_SECRET ?? '',
+
 });
 const handler = NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
@@ -36,20 +35,6 @@ const handler = NextAuth({
     credentialsProvider,
     githubProvider,
   ],
-  callbacks: {
-    async jwt({ token }) {
-      let authToken = token
-      const defaultRole = await fetchDefaultRole()
-      return {
-        ...authToken,
-        roleName: defaultRole?.name,
-        roleId: defaultRole?.id,
-      };
-    },
-  },
-  // pages: {
-  //   signIn: '/login'
-  // }
 });
 
 export { handler as GET, handler as POST };
