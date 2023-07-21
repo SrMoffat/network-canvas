@@ -20,9 +20,9 @@ export interface LanguageProviderProps {
 }
 export interface AuthProviderProps {
     children: ReactNode
-  }
+}
 
-  export interface InputProps {
+export interface InputProps {
     name: string;
     label: string;
     type: string;
@@ -31,8 +31,13 @@ export interface AuthProviderProps {
 }
 export interface AvatarProps {
     src: string | null | undefined;
-  }
-  
-  
+}
+export interface UserProfile {
+    name: string;
+    email: string;
+    image: string
+}
 
-
+export interface Profile {
+    user: UserProfile
+}

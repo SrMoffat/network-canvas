@@ -1,4 +1,4 @@
-import { Credentials } from "@/lib/types";
+import { Credentials } from '@/lib/types';
 
 export async function loginUser(credentials: Credentials): Promise<any> {
   try {
