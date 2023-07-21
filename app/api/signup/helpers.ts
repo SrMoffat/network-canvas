@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib';
 
-interface Details {
-    theme: number | undefined;
-    role: number | undefined;
-    language: number | undefined;
-}
+// interface Details {
+//     theme: number | undefined;
+//     role: number | undefined;
+//     language: number | undefined;
+// }
 
 export const conectionObject = (value: string | number | undefined) => {
   return {

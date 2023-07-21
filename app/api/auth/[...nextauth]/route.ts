@@ -1,10 +1,10 @@
 import NextAuth from 'next-auth/next';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import GithubProvider from 'next-auth/providers/github';
+// import GithubProvider from 'next-auth/providers/github';
 
 
 // @ts-ignore
-const handleLogin = async (credentials, req) => {
+const handleLogin = async (credentials) => {
   // Add logic here to look up the user from the credentials supplied
   const res = await fetch('http://localhost:3000/api/login', {
     method: 'POST',
@@ -32,17 +32,17 @@ const credentialsProvider = CredentialsProvider({
   },
   authorize: handleLogin,
 });
-const githubProvider = GithubProvider({
-  clientId: process.env.CLIENT_ID ?? '',
-  clientSecret: process.env.CLIENT_SECRET ?? '',
-  authorization: {
-    params: {
-      prompt: 'consent',
-      access_type: 'offline',
-      response_type: 'code',
-    },
-  },
-});
+// const githubProvider = GithubProvider({
+//   clientId: process.env.CLIENT_ID ?? '',
+//   clientSecret: process.env.CLIENT_SECRET ?? '',
+//   authorization: {
+//     params: {
+//       prompt: 'consent',
+//       access_type: 'offline',
+//       response_type: 'code',
+//     },
+//   },
+// });
 
 const handler = NextAuth({
   providers: [
