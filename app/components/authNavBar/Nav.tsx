@@ -7,7 +7,7 @@ import HumburgerMenu from '@/app/components/authNavBar/Humburger';
 import UserMenuSelector from '@/app/components/authNavBar/Profile';
 import LanguageSelector from '@/app/components/authNavBar/Localization';
 
-import { ThemeContext } from '@/app/providers';
+import { ThemeContext } from '@/app/components/providers';
 
 const AuthenticatedNav = () => {
   // @ts-ignore

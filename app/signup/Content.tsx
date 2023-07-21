@@ -32,7 +32,7 @@ const SignUpContent = () =>
             <button type="submit" className="btn w-full font-medium rounded-lg text-sm px-5 py-2.5 text-center">Create an account</button>
             <p className="text-sm font-light">
                             Already have an account?
-              <Link href="/auth/login">
+              <Link href="/login">
                                 Login here
               </Link>
             </p>
