@@ -2,7 +2,9 @@ import React from 'react';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
+import AuthProvider from '@/app/components/providers/auth';
 import { ThemeProvider } from '@/app/components/providers';
+
 import './globals.css';
 
 const font = Inter({ subsets: ['latin'] });
@@ -20,9 +22,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+        <AuthProvider>
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );

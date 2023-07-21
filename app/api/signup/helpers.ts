@@ -41,3 +41,31 @@ export const fetchDefaults = async () => {
     return NextResponse.json({ errors: ['Something went wrong'] }, { status: 500 });
   }
 };
+
+// @ts-ignore
+export const createNewUser = async (data, defaults) => {
+  const user = await prisma.user.create({
+    data: {
+      ...data,
+      role: {
+        connect: {
+          // @ts-ignore
+          id: defaults.role,
+        },
+      },
+      language: {
+        connect: {
+          // @ts-ignore
+          id: defaults.language,
+        },
+      },
+      theme: {
+        connect: {
+          // @ts-ignore
+          id: defaults.theme,
+        },
+      },
+    },
+  });
+  return user;
+};

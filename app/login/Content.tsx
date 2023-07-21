@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link';
 const LoginContent = () =>
   <section>
     <div className="flex flex-col items-center justify-center py-6">
@@ -19,9 +19,9 @@ const LoginContent = () =>
             <button type="submit" className="btn w-full font-medium rounded-lg text-sm px-5 py-2.5 text-center">Login to account</button>
             <p className="text-sm font-light">
                             Don&apost have an account?
-                            <Link href="/signup" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
+              <Link href="/signup" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
                             Signup here
-                            </Link>
+              </Link>
             </p>
           </form>
         </div>
