@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
 import AuthProvider from '@/app/components/providers/auth';
-import { ThemeProvider } from '@/app/components/providers';
+import { ThemeProvider, UserProvider } from '@/app/components/providers';
 
 import './globals.css';
 
@@ -23,9 +23,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <AuthProvider>
-          <ThemeProvider>
-            {children}
-          </ThemeProvider>
+          <UserProvider>
+            <ThemeProvider>
+              {children}
+            </ThemeProvider>
+          </UserProvider>
         </AuthProvider>
       </body>
     </html>

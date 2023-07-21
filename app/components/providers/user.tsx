@@ -61,7 +61,6 @@ export function UserProvider({ children }: UserProviderProps) {
   const normalLogin = async (data: Data) => {
     try {
       const response = await loginUser(data);
-      console.log('response', response);
       persistUser(response);
     } catch (error) {
       throw error;

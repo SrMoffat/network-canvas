@@ -1,4 +1,4 @@
-import LoginForm from "./Form";
+import LoginForm from './Form';
 
 const LoginContainer = () => {
   return (
@@ -14,13 +14,13 @@ const LoginContainer = () => {
         </div>
       </div>
     </section>
-  )
+  );
 };
 
 const LoginContent = () => {
   return (
     <LoginContainer />
-  )
+  );
 };
 
 export default LoginContent;

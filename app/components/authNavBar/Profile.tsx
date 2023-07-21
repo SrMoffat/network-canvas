@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { signOut } from 'next-auth/react';
 
 const UserDropdown = () =>
   <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
@@ -12,7 +13,7 @@ const UserDropdown = () =>
       </a>
     </li>
     <Link legacyBehavior href="/home"><li><a>Profile</a></li></Link>
-    <li onClick={() => {}}><a>Logout</a></li>
+    <li onClick={() => signOut()}><a className="text-red-500">Logout</a></li>
   </ul>
   ;
 
