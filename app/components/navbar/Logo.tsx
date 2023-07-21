@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useContext } from 'react';
 import { useRouter } from 'next/navigation';
 
-import { ThemeContext } from '@/app/providers';
+import { ThemeContext } from '@/app/components/providers';
 
 // @ts-ignore
 const Logo = (props) => {
@@ -16,6 +16,7 @@ const Logo = (props) => {
 
   return (
     <Image
+      priority
       onClick={() => router.push('/')}
       className="hidden md:block cursor-pointer"
       src={logoImage}

@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import ThemeToggler from '@/app/components/theme/ThemeToggler';
 import RecentUploadContent from '@/app/components/navbar/RecentUpload';
 
-import { ThemeContext } from '@/app/providers';
+import { ThemeContext } from '@/app/components/providers';
 
 const NavBarButton = () => {
   const modalId = 'recent-upload';

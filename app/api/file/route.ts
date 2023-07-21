@@ -13,3 +13,16 @@ export async function POST() {
 
   return NextResponse.json({ data });
 }
+export async function GET() {
+  const data = {
+    id: 2,
+    name: 'Test',
+    type: '.json',
+    content: '{some: "data"}',
+    createdAt: 'hehehe',
+    updatedAt: 'Admin',
+
+  };
+
+  return NextResponse.json({ data });
+}

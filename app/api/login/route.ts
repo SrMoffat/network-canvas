@@ -14,6 +14,11 @@ export async function POST(request: Request) {
     where: {
       email: body?.email,
     },
+    include: {
+      language: true,
+      role: true,
+      theme: true,
+    },
   });
   if (userExists) {
     const valid = await bcrypt.compare(

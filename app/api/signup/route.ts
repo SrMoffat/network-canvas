@@ -1,10 +1,11 @@
 import * as bcrypt from 'bcrypt';
-import { omit } from 'lodash';
-import { NextResponse } from 'next/server';
-import { prisma, userSignUpSchema } from '@/lib';
-import { ValidationError } from 'yup';
-import { fetchDefaults } from '@/app/api/signup/helpers';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
+
+import { omit } from 'lodash';
+import { ValidationError } from 'yup';
+import { NextResponse } from 'next/server';
+
+import { createNewUser, userSignUpSchema } from '@/lib';
 
 interface RequestBody {
     username: string;
@@ -27,30 +28,7 @@ export async function POST(request: Request) {
       username,
       password: hashedPassword,
     };
-    const defaults = await fetchDefaults();
-    const user = await prisma.user.create({
-      data: {
-        ...data,
-        role: {
-          connect: {
-            // @ts-ignore
-            id: defaults.role,
-          },
-        },
-        language: {
-          connect: {
-            // @ts-ignore
-            id: defaults.language,
-          },
-        },
-        theme: {
-          connect: {
-            // @ts-ignore
-            id: defaults.theme,
-          },
-        },
-      },
-    });
+    const user = await createNewUser(data);
     return NextResponse.json({ body: omit(user, 'password') });
   } catch (error) {
     if (error instanceof ValidationError) {
@@ -65,6 +43,5 @@ export async function POST(request: Request) {
       }
     }
     return NextResponse.json({ errors: ['Something went wrong'] }, { status: 500 });
-
   }
 }

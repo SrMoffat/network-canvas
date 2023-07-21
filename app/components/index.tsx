@@ -2,6 +2,7 @@ export { default as Hero } from './hero';
 export { default as Avatar } from './avatar';
 export { default as Footer } from './footer';
 export { default as Nav } from './navbar/Nav';
+export { default as Input } from './form/Input';
 export { default as Logo } from './navbar/Logo';
 export { default as Loader } from './info/Loader';
 export { default as InfoTitle } from './info/Title';

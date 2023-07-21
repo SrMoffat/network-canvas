@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { useContext } from 'react';
 
-import { ThemeContext } from '@/app/providers';
+import { ThemeContext } from '@/app/components/providers';
 
 const Hero = () => {
   // @ts-ignore
@@ -20,7 +20,7 @@ const Hero = () => {
             Upload and view JSON data from various sources.
             With correct priviledges you can also manage users and permissions
           </p>
-          <Link href="/auth/signup" className="px-4">
+          <Link href="/signup" className="px-4">
             <button className="btn">Get Started</button>
           </Link>
         </div>
