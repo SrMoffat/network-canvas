@@ -43,7 +43,7 @@ const githubProvider = GithubProvider({
     },
   },
 });
-  
+
 const handler = NextAuth({
   providers: [
     credentialsProvider,
