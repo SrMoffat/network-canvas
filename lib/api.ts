@@ -50,3 +50,16 @@ export async function fetchUsers(): Promise<any> {
     throw error;
   }
 };
+export async function fetchFiles(): Promise<any> {
+  try {
+    const res = await fetch(`${BASE_URL}/api/file`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    return await res.json();
+  } catch (error) {
+    throw error;
+  }
+};
