@@ -1,5 +1,3 @@
-import React from 'react';
-
 import UsersPageContent from './Content';
 import { AuthNav, AuthNavDrawer } from '../components';
 
