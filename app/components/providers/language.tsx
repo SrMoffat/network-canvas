@@ -11,7 +11,7 @@ interface LanguageProviderProps {
 
 export const LanguageContext = createContext<LanguageContextProps>({
   language: 'en',
-  setLanguage: () => {}
+  setLanguage: () => {},
 });
 
 export function LanguageProvider({ children }: LanguageProviderProps) {
