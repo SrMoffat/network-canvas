@@ -35,6 +35,9 @@ const handler = NextAuth({
     githubProvider,
   ],
   secret: process.env.NEXTAUTH_SECRET,
+  // pages: {
+  //   signIn: '/login'
+  // }
 });
 
 export { handler as GET, handler as POST };
