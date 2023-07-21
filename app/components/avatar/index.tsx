@@ -2,9 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-interface AvatarProps {
-  src: string | null | undefined;
-}
+import { AvatarProps } from '@/lib/types';
 
 const Avatar: React.FC<AvatarProps> = ({ src }) => {
   return (

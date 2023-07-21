@@ -1,5 +1,6 @@
 'use client';
 import { useContext } from 'react';
+import { useSession } from 'next-auth/react';
 
 import HeaderLogo from '@/app/components/authNavBar/Logo';
 import ThemeToggler from '@/app/components/theme/ThemeToggler';
@@ -12,6 +13,7 @@ import { ThemeContext } from '@/app/components/providers';
 const AuthenticatedNav = () => {
   // @ts-ignore
   const { toggleTheme } = useContext(ThemeContext);
+  const { data: session } = useSession();
   return (
 
     <div className="w-full navbar bg-base-300 shadow-md">
@@ -22,7 +24,7 @@ const AuthenticatedNav = () => {
           <ThemeToggler handleChange={() => toggleTheme()} />
           <div className="flex-none pr-4">
             <LanguageSelector />
-            <UserMenuSelector />
+            <UserMenuSelector user={session?.user as {name: string, email: string, image: string }} />
           </div>
         </ul>
       </div>

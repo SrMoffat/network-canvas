@@ -34,7 +34,7 @@ const handler = NextAuth({
     credentialsProvider,
     githubProvider,
   ],
-  secret: process.env.NEXTAUTH_SECRET
+  secret: process.env.NEXTAUTH_SECRET,
 });
 
 export { handler as GET, handler as POST };

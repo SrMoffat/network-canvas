@@ -1,4 +1,6 @@
-export async function loginUser(credentials: { email: any; password: any; }): Promise<any> {
+import { Credentials } from "@/lib/types";
+
+export async function loginUser(credentials: Credentials): Promise<any> {
   try {
     const res = await fetch('http://localhost:3000/api/login', {
       method: 'POST',
@@ -15,3 +17,4 @@ export async function loginUser(credentials: { email: any; password: any; }): Pr
     console.log('Error', error);
   }
 };
+

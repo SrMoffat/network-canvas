@@ -1,13 +1,7 @@
 'use client';
-import { useState, useEffect, createContext, ReactNode } from 'react';
+import { useState, useEffect, createContext } from 'react';
 
-interface ThemeContextProps {
-  theme: string;
-  toggleTheme: () => void;
-}
-interface ThemeProviderProps {
-  children: ReactNode;
-}
+import { ThemeContextProps, ThemeProviderProps } from '@/lib/types';
 
 export const ThemeContext = createContext<ThemeContextProps>({
   theme: 'dark',

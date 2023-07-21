@@ -1,14 +1,7 @@
+import { InputProps } from "@/lib/types";
 
 const labelClassName = 'block mb-2 text-sm font-medium';
 const inputClassName = 'border sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5';
-
-interface InputProps {
-    name: string;
-    label: string;
-    type: string;
-    placeholder: string;
-    onChange: (event: any) => void;
-}
 
 const Input = ({ name, label, type, placeholder, ...props }: InputProps) =>
   <div key={name}>
@@ -22,6 +15,5 @@ const Input = ({ name, label, type, placeholder, ...props }: InputProps) =>
       {...props}
     />
   </div>;
-
 
 export default Input;

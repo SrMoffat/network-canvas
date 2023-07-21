@@ -17,15 +17,15 @@ const UserDropdown = () =>
   </ul>
   ;
 
-const UserMenuSelector = () =>
+const UserMenuSelector = ({ user }: { user: {name: string, email: string, image: string } }) =>
   <div className="dropdown dropdown-end">
     <label tabIndex={0} className="btn btn-ghost btn-circle avatar ">
       <div className="w-10 rounded-full">
-        <Image alt="Profile" src="/images/dark.jpg" width="50" height="50" />
+        <Image alt="Profile" src={user?.image ?? '/images/dark.jpg'} width="50" height="50" />
       </div>
     </label>
     <UserDropdown />
   </div>
-  ;
+;
 
 export default UserMenuSelector;

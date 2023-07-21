@@ -1,13 +1,7 @@
 'use client';
-import { useState, useEffect, createContext, ReactNode } from 'react';
+import { useState, useEffect, createContext } from 'react';
 
-interface LanguageContextProps {
-  language: string;
-  setLanguage: (lang: string) => void;
-}
-interface LanguageProviderProps {
-  children: ReactNode;
-}
+import { LanguageContextProps, LanguageProviderProps } from '@/lib/types';
 
 export const LanguageContext = createContext<LanguageContextProps>({
   language: 'en',

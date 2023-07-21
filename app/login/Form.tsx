@@ -77,7 +77,7 @@ const LoginForm = () => {
   };
   const handleGithubLogin = () => {
     signIn('github', {
-        callbackUrl: '/home'
+      callbackUrl: '/home',
     });
   };
   const updateField = (event: any) => {
