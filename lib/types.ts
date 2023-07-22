@@ -78,12 +78,20 @@ export interface UserData {
     theme: Theme;
     role: Role;
 }
-
 export interface Profile {
     user: UserProfile
 }
 export interface RequestBody {
     email: string;
     password: string
+}
+export interface File {
+    id: number | string;
+    name: string; //
+    type: string; //
+    content: string;
+    createdAt: string;
+    updatedAt: string;
+    user: UserData;
 }
 
