@@ -78,6 +78,13 @@ export interface UserData {
     theme: Theme;
     role: Role;
 }
+export interface UserFiles {
+    id: string | number;
+    username: string;
+    email: string;
+    avatar_url: string;
+    files: File[];
+}
 
 export interface Profile {
     user: UserProfile

@@ -15,3 +15,19 @@ export const getRoleBadgeColor = (role: string) => {
   }
   return badgeColor;
 };
+
+export const getReadableFileSize = (sizeInBytes: number) => {
+  const fileSizeInKB = Math.round(sizeInBytes / 1024);
+  const fileSizeInMB = Math.round(fileSizeInKB / 1024);
+  const displaySize = fileSizeInMB <= 0
+    ? `${fileSizeInKB} KB`
+    : (fileSizeInKB <= 0
+      ? `${sizeInBytes} Bytes`
+      : `${fileSizeInMB} MB`)
+  return {
+    fileSizeInKB,
+    fileSizeInMB,
+    fileSizeInBytes: sizeInBytes,
+    displaySize
+  }
+}

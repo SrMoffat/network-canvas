@@ -63,3 +63,27 @@ export async function fetchFiles(): Promise<any> {
     throw error;
   }
 };
+export async function fetchUserFiles(email: string): Promise<any> {
+  try {
+    const res = await fetch(`${BASE_URL}/api/user?email=${email}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    return await res.json();
+  } catch (error) {
+    throw error;
+  }
+};
+export async function uploadFile(data: FormData): Promise<any> {
+  try {
+    const res = await fetch('/api/file', {
+      method: 'POST',
+      body: data,
+    });
+    return await res.json();
+  } catch (error) {
+    throw error;
+  }
+};
