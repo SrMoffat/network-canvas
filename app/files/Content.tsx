@@ -22,7 +22,7 @@ const FilesPageContent = () => {
     <FilesPageContainer>
       <FilesList />
     </FilesPageContainer>
-  )
+  );
 };
 
 export default FilesPageContent;
