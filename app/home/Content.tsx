@@ -1,6 +1,7 @@
 import Breadcrumbs from './Breadcrumbs';
-import { UserFilesContainer, UserFiles } from './Files';
+import { UserFilesContainer } from './Files';
 import { AccountDetailsContainer, AccountDetails } from './Account';
+import FileList from './Table'
 
 const HomePageContent = () => {
   return (
@@ -12,7 +13,7 @@ const HomePageContent = () => {
         </AccountDetailsContainer>
         <div className="divider"></div>
         <UserFilesContainer>
-          <UserFiles />
+          <FileList />
         </UserFilesContainer>
       </div>
     </div>
