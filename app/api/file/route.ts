@@ -29,16 +29,6 @@ export async function POST(request: NextRequest) {
       }
     }
   })
-
-  console.log('File',newFile);
-
-
-
-
-
-  // // For this, we'll just write it to the filesystem in a new location
-  // console.log(`open ${path} to see the uploaded file`)
-
   return NextResponse.json({ data: omit(newFile, 'content') });
 }
 export async function GET() {

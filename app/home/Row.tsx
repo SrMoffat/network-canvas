@@ -2,6 +2,7 @@ import { parseISO, formatDistance, format } from 'date-fns';
 import { AiOutlineCloudDownload, AiOutlineDelete } from 'react-icons/ai';
 
 import { File } from '@/lib/types';
+import { getReadableFileSize } from '@/lib/roles';
 
 const FileName = ({ fileName, size }: { fileName: string; size: string }) =>
   <td>
@@ -33,11 +34,11 @@ const Actions = () =>
 
 
 const FileEntry = ({ file }: { file: File }) => {
+  const { displaySize } = getReadableFileSize(parseFloat(file?.type))
   return (
     <tr className="hover">
-      <FileName fileName={file?.name} size={file?.type} />
+      <FileName fileName={file?.name} size={displaySize} />
       <Uploaded uploadedAt={file?.createdAt} />
-      {/* <UploadedBy avatar={file?.user?.avatar_url} name={file?.user?.username} email={file?.user?.email} /> */}
       <Actions />
     </tr>
   );
