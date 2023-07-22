@@ -1,5 +1,5 @@
-import Breadcrumbs from './Breadcrumbs';
 import UsersList from './Table';
+import Breadcrumbs from './Breadcrumbs';
 
 // @ts-ignore
 const UsersPageContainer = ({ children }) => {

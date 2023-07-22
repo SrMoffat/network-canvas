@@ -1,7 +1,5 @@
-import React from 'react';
-
-import { AuthNav, AuthNavDrawer } from '../components';
 import FilesPageContent from './Content';
+import { AuthNav, AuthNavDrawer } from '../components';
 
 export default function Files() {
   return (
@@ -15,5 +13,3 @@ export default function Files() {
     </div>
   );
 }
-
-
