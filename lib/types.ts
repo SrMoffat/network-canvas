@@ -86,4 +86,12 @@ export interface RequestBody {
     email: string;
     password: string
 }
-
+export interface File {
+    id: string | number;
+    name: string;
+    type: string;
+    content: string;
+    createdAt: string;
+    updatedAt: string;
+    user: UserData
+}

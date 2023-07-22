@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@/lib';
 
+import { prisma } from '@/lib';
 
 export async function POST() {
   const data = {
@@ -24,11 +24,8 @@ export async function GET() {
           username: true,
           email: true,
           avatar_url: true,
-          // language: true,
-          // role: true,
-          // theme: true
-        }
-      }
+        },
+      },
     },
   });
   return NextResponse.json({ data: files });
