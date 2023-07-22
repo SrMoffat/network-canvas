@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { AiOutlinePaperClip } from 'react-icons/ai';
 
 import { uploadFile } from '@/lib/api';
+import { getReadableFileSize } from '@/lib/roles';
 
 // @ts-ignore
 function UploadForm({ modalId }) {
@@ -25,11 +26,7 @@ function UploadForm({ modalId }) {
       fileSizeInBytes = file.size;
       fileSizeInKB = Math.round(fileSizeInBytes / 1024);
       fileSizeInMB = Math.round(fileSizeInKB / 1024);
-      const displaySize = fileSizeInMB <= 0
-        ? `${fileSizeInKB} KB`
-        : (fileSizeInKB <= 0
-          ? `${fileSizeInBytes} Bytes`
-          : `${fileSizeInMB} MB`)
+      const { displaySize } = getReadableFileSize(fileSizeInBytes)
       setFileSize(displaySize)
     }
   };
@@ -44,9 +41,11 @@ function UploadForm({ modalId }) {
           className="file-input file-input-bordered w-full max-w-xs"
           onChange={handleSetFile}
         />
-        <div className="ml-4 mt-2">
-          <div className="badge badge-outline">{fileSize}</div>
-        </div>
+        {fileSize && (
+          <div className="ml-4 mt-2">
+            <div className="badge badge-outline">{fileSize}</div>
+          </div>
+        )}
       </div>
       <div className="flex mt-5 justify-center">
         <input className="btn btn-outline mr-4" type="submit" value="Upload" />

@@ -1,0 +1,195 @@
+{
+	"info": {
+		"_postman_id": "b8e0f749-c155-4f66-8bf0-f7a38b7ddb0b",
+		"name": "DispatchAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Dispatch API",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var AppKey = \"*****\";\r",
+							"\r",
+							"var AppSecret=\"******\";\r",
+							"\r",
+							"var date = new Date();\r",
+							"\r",
+							"var y = date.getUTCFullYear();\r",
+							"\r",
+							"var m = date.getUTCMonth() + 1;\r",
+							"\r",
+							"m = m < 10 ? ('0' + m) : m;\r",
+							"\r",
+							"var d = date.getUTCDate();\r",
+							"\r",
+							"d = d < 10 ? ('0' + d) : d;\r",
+							"\r",
+							"var h = date.getUTCHours();\r",
+							"\r",
+							"h=h < 10 ? ('0' + h) : h;\r",
+							"\r",
+							"var minute = date.getUTCMinutes();\r",
+							"\r",
+							"minute = minute < 10 ? ('0' + minute) : minute; \r",
+							"\r",
+							"var second=date.getUTCSeconds(); \r",
+							"\r",
+							"second=second < 10 ? ('0' + second) : second; \r",
+							"\r",
+							"var millisecond = date.getUTCMilliseconds();\r",
+							"\r",
+							"//Obtain the time. The format is as follows:yyyy-mm-dd HH:mm:ssZ               \r",
+							"var timespan=y + '-' + m + '-' + d+'T'+h+':'+minute+':'+second+'Z';\r",
+							"\r",
+							"var noncetime=y+m+h+minute+second+millisecond;\r",
+							"\r",
+							"//var noncetime=\"wPh3ef91UBenwrF6b79AVh8Nf\"\r",
+							"\r",
+							"var nonveArray = CryptoJS.enc.Utf8.parse(noncetime);\r",
+							"\r",
+							"var nonce=CryptoJS.enc.Base64.stringify(nonveArray);\r",
+							"\r",
+							"var rawStr =nonce+timespan+AppSecret;//Unencoded initial packet\r",
+							"\r",
+							"var wordArray = CryptoJS.enc.Utf8.parse(rawStr);\r",
+							"\r",
+							"var SHA256 = CryptoJS.SHA256(wordArray);\r",
+							"\r",
+							"//var SHA256Array = CryptoJS.enc.Utf8.parse(SHA256);\r",
+							"\r",
+							"var base64 = CryptoJS.enc.Base64.stringify(SHA256);\r",
+							"\r",
+							"postman.setGlobalVariable(\"Authorization\", \"WSSE realm=\\\"DOP\\\", profile=\\\"UsernameToken\\\"\");\r",
+							"\r",
+							"postman.setGlobalVariable(\"X-WSSE\", \"UsernameToken Username=\\\"\"+AppKey+\"\\\", PasswordDigest=\\\"\"+base64+\"\\\", Nonce=\\\"\"+nonce+\"\\\", Created=\\\"\"+timespan+\"\\\"\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{Authorization}}",
+						"type": "text"
+					},
+					{
+						"key": "X-WSSE",
+						"value": "{{X-WSSE}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "X-RequestHeader",
+						"value": "request TransId=\"2009032412304510000\"",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"ProductID\":\"xxxxxxxx\",\r\n\t\"MSISDN\":\"712345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://159.138.162.228:18312/tmf-api/party/v1/Dispatch",
+					"protocol": "https",
+					"host": [
+						"159",
+						"138",
+						"162",
+						"228"
+					],
+					"port": "18312",
+					"path": [
+						"tmf-api",
+						"party",
+						"v1",
+						"Dispatch"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Dispatch API",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "X-WSSE",
+								"value": "{{X-WSSE}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "X-RequestHeader",
+								"value": "request TransId=\"2009032412304510000\"",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"ProductID\":\"P2021072208124752Jkr66T\",\r\n\t\"MSISDN\":\"714202968\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dop_url}}/tmf-api/party/v1/Dispatch",
+							"host": [
+								"{{dop_url}}"
+							],
+							"path": [
+								"tmf-api",
+								"party",
+								"v1",
+								"Dispatch"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "90"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"Result\": \"0\",\n    \"Description\": \"SUCCESS\",\n    \"TransactionID\": \"2009032412304510000\"\n}"
+				}
+			]
+		}
+	]
+}
