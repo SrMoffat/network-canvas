@@ -1,7 +1,7 @@
 import Breadcrumbs from './Breadcrumbs';
 import { UserFilesContainer } from './Files';
 import { AccountDetailsContainer, AccountDetails } from './Account';
-import FileList from './Table'
+import FileList from './Table';
 
 const HomePageContent = () => {
   return (

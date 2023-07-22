@@ -76,3 +76,14 @@ export async function fetchUserFiles(email: string): Promise<any> {
     throw error;
   }
 };
+export async function uploadFile(data: FormData): Promise<any> {
+  try {
+    const res = await fetch('/api/file', {
+      method: 'POST',
+      body: data,
+    });
+    return await res.json();
+  } catch (error) {
+    throw error;
+  }
+};

@@ -9,29 +9,29 @@ import TableHeader from './Header';
 import { UserFiles } from '@/lib/types';
 
 const TableRows = ({ files }: { files: UserFiles | undefined }) => {
-    return files?.files?.map(file => <Row key={file?.id} file={file} />);
+  return files?.files?.map(file => <Row key={file?.id} file={file} />);
 };
 
 const FilesList = () => {
-    const { data: session } = useSession();
-    const [userFiles, setUserFiles] = useState<UserFiles>();
-    useEffect(() => {
-        const getUserFiles = async () => {
-            const files = await fetchUserFiles(session?.user?.email as string);
-            setUserFiles(files?.data);
-        };
-        getUserFiles();
-    }, [session?.user]);
+  const { data: session } = useSession();
+  const [userFiles, setUserFiles] = useState<UserFiles>();
+  useEffect(() => {
+    const getUserFiles = async () => {
+      const files = await fetchUserFiles(session?.user?.email as string);
+      setUserFiles(files?.data);
+    };
+    getUserFiles();
+  }, [session?.user]);
 
 
-    return (
-        <table className="table">
-            <TableHeader />
-            <tbody>
-                <TableRows files={userFiles} />
-            </tbody>
-        </table>
-    );
+  return (
+    <table className="table">
+      <TableHeader />
+      <tbody>
+        <TableRows files={userFiles} />
+      </tbody>
+    </table>
+  );
 };
 
 export default FilesList;
