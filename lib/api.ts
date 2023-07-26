@@ -87,3 +87,14 @@ export async function uploadFile(data: FormData): Promise<any> {
     throw error;
   }
 };
+export async function deleteFile(fileUrl: string): Promise<any> {
+  try {
+    const res = await fetch('/api/file', {
+      method: 'DELETE',
+      body: fileUrl,
+    });
+    return await res.json();
+  } catch (error) {
+    throw error;
+  }
+};

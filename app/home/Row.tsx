@@ -3,6 +3,7 @@ import { AiOutlineCloudDownload, AiOutlineDelete } from 'react-icons/ai';
 
 import { File } from '@/lib/types';
 import { getReadableFileSize } from '@/lib/roles';
+import { deleteFile } from '@/lib/api';
 
 const FileName = ({ fileName, size }: { fileName: string; size: string }) =>
   <td>
@@ -22,18 +23,18 @@ const Uploaded = ({ uploadedAt }: { uploadedAt: string; }) =>
   </td>;
 
 
-const Actions = ({ fileUrl }: { fileUrl: string }) => {
-  const handleDownload = (url: string) => {
-    console.log("Download", url)
-  }
-  const handleDelete = (url: string) => {
-    console.log("Delete", url)
+const Actions = ({ fileUrl }: { fileUrl: string, fileName: string }) => {
+  const handleDelete = async (url: string) => {
+    await deleteFile(url)
   }
   return (
     <td>
-      <button className="btn mr-2" onClick={() => handleDownload(fileUrl)}>
+      <a target="_blank" referrerPolicy="no-referrer" href={fileUrl} className="btn mr-2">
         <AiOutlineCloudDownload size="20" />
-      </button>
+      </a>
+      {/* <button className="btn mr-2" onClick={() => handleDownload(fileUrl)}>
+        <AiOutlineCloudDownload size="20" />
+      </button> */}
       <button className="btn mr-2">
         <AiOutlineDelete size="20" style={{ color: 'red' }} onClick={() => handleDelete(fileUrl)} />
       </button>
@@ -48,7 +49,7 @@ const FileEntry = ({ file }: { file: File }) => {
     <tr className="hover">
       <FileName fileName={file?.name} size={displaySize} />
       <Uploaded uploadedAt={file?.createdAt} />
-      <Actions fileUrl={file?.url} />
+      <Actions fileUrl={file?.url} fileName={file?.name} />
     </tr>
   );
 };

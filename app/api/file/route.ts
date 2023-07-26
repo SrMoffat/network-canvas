@@ -52,3 +52,12 @@ export async function GET() {
   });
   return NextResponse.json({ data: files });
 }
+export async function DELETE(req: NextRequest) {
+  const body = await req.json();
+  const file = await prisma.file.delete({
+    where: {
+      url: body?.url,
+    }
+  });
+  return NextResponse.json({ data: file });
+}
