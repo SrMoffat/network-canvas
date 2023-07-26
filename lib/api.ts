@@ -1,6 +1,6 @@
 import { Credentials } from '@/lib/types';
 
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'http://localhost:3001';
 
 export async function loginUser(credentials: Credentials): Promise<any> {
   try {

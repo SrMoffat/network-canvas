@@ -34,7 +34,7 @@ const Actions = () =>
 
 
 const FileEntry = ({ file }: { file: File }) => {
-  const { displaySize } = getReadableFileSize(parseFloat(file?.type))
+  const { displaySize } = getReadableFileSize(parseFloat(file?.type));
   return (
     <tr className="hover">
       <FileName fileName={file?.name} size={displaySize} />
