@@ -22,7 +22,6 @@ export async function POST(request: NextRequest) {
   if (uploadResult) {
     unlink(path);
   }
-  // TODO: Save URL in DB
   const newFile = await prisma.file.create({
     data: {
       name: file?.name,
