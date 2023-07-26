@@ -14,3 +14,4 @@ export const uploadFile = async (path: string, name: string) => {
       console.error("Cloduinary Error", error);
     }
   };
+  
