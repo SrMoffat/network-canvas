@@ -31,6 +31,7 @@ export async function GET(req: Request) {
           id: true,
           name: true,
           type: true,
+          url: true,
           createdAt: true,
         },
       },

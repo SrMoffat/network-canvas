@@ -99,6 +99,7 @@ export interface File {
     type: string;
     content: string;
     createdAt: string;
+    url: string;
     updatedAt: string;
     user: UserData
 }
