@@ -1,9 +1,11 @@
+import { pick } from 'lodash';
 import NextAuth from 'next-auth/next';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GithubProvider from 'next-auth/providers/github';
 
 import { loginUser } from '@/lib/api';
-import { fetchDefaultLanguage, fetchDefaultRole, fetchDefaultTheme } from '@/lib';
+import { createNewUser, fetchDefaultLanguage, fetchDefaultRole, fetchDefaultTheme } from '@/lib';
+
 // @ts-ignore
 const handleLogin = async (credentials) => {
   const user = await loginUser({
@@ -37,7 +39,7 @@ const handler = NextAuth({
   ],
   callbacks: {
     async jwt({ token, user }) {
-      if(user){
+      if (user) {
         const defaultRole = await fetchDefaultRole();
         const defaultLanguage = await fetchDefaultLanguage();
         const defaultTheme = await fetchDefaultTheme();
@@ -49,29 +51,36 @@ const handler = NextAuth({
         token.themeName = defaultTheme?.name;
         token.themeId = defaultTheme?.id;
       }
-      console.log("JWT", token)
       return token;
     },
     async session({ session, token }) {
-      // @ts-ignore
-      session.user.roleName = token.roleName;
-      // @ts-ignore
-      session.user.roleId = token.roleId;
-      // @ts-ignore
-      session.user.roleDescription = token.roleDescription;
-      // @ts-ignore
-      session.user.languageName = token.languageName;
-      // @ts-ignore
-      session.user.languageCode = token.languageCode;
-      // @ts-ignore
-      session.user.themeName = token.themeName;
-      // @ts-ignore
-      session.user.themeId = token.themeId;
-
-      // TODO: Insert user in DB
-      // const userData = {};
-      console.log("Session", session)
-      return session;
+      try {
+        // @ts-ignore
+        session.user.roleName = token.roleName;
+        // @ts-ignore
+        session.user.roleId = token.roleId;
+        // @ts-ignore
+        session.user.roleDescription = token.roleDescription;
+        // @ts-ignore
+        session.user.languageName = token.languageName;
+        // @ts-ignore
+        session.user.languageCode = token.languageCode;
+        // @ts-ignore
+        session.user.themeName = token.themeName;
+        // @ts-ignore
+        session.user.themeId = token.themeId;
+        const user = pick(session?.user, ['name', 'email', 'image'])
+        const userDetails = {
+          email: user.email,
+          username: user.name,
+          password: user.email,
+          avatar_url: user.image
+        };
+        await createNewUser(userDetails)
+        return session;
+      } catch (error) {
+        return session
+      }
     },
   },
 });

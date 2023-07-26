@@ -1,3 +1,5 @@
+import * as bcrypt from 'bcrypt';
+
 import { prisma } from '@/lib';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
@@ -89,6 +91,7 @@ export const createNewUser = async (data) => {
     const user = await prisma.user.create({
       data: {
         ...data,
+        password: await bcrypt.hash(data.password, 12),
         role: {
           connect: {
             // @ts-ignore

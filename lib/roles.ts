@@ -1,3 +1,5 @@
+import * as bcrypt from 'bcrypt';
+
 export const getRoleBadgeColor = (role: string) => {
   let badgeColor = '';
   switch (true) {

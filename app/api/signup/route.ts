@@ -1,4 +1,3 @@
-import * as bcrypt from 'bcrypt';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
 import { omit } from 'lodash';
@@ -22,11 +21,10 @@ export async function POST(request: Request) {
       username,
       password,
     } = body;
-    const hashedPassword = await bcrypt.hash(password, 12);
     const data = {
       email,
       username,
-      password: hashedPassword,
+      password,
     };
     const user = await createNewUser(data);
     return NextResponse.json({ body: omit(user, 'password') });
