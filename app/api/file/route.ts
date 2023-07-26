@@ -9,15 +9,15 @@ export async function POST(request: NextRequest) {
   const file: File | null = data.get('file') as unknown as File;
   if (!file) {
     // TODO: Return proper errors
-    return NextResponse.json({ success: false })
+    return NextResponse.json({ success: false });
   }
-  const path = `./${file.name}`
-  const bytes = await file.arrayBuffer()
-  const buffer = Buffer.from(bytes)
-  await writeFile(path, buffer)
+  const path = `./${file.name}`;
+  const bytes = await file.arrayBuffer();
+  const buffer = Buffer.from(bytes);
+  await writeFile(path, buffer);
   const uploadResult = await uploadFile(path, file.name);
   if (uploadResult) {
-    unlink(path)
+    unlink(path);
   }
   // TODO: Save URL in DB
   const newFile = await prisma.file.create({
@@ -27,12 +27,12 @@ export async function POST(request: NextRequest) {
       user: {
         // Get user uploading file
         connect: {
-          id: 2
-        }
+          id: 2,
+        },
       },
-      url: uploadResult as string
-    }
-  })
+      url: uploadResult as string,
+    },
+  });
   return NextResponse.json({ data: omit(newFile, 'content') });
 }
 export async function GET() {
