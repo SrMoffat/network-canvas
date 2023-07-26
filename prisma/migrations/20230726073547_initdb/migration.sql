@@ -11,7 +11,6 @@ CREATE TABLE "Role" (
 CREATE TABLE "Theme" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL,
-    "description" TEXT NOT NULL,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL
 );
@@ -20,6 +19,7 @@ CREATE TABLE "Theme" (
 CREATE TABLE "Language" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL,
+    "code" TEXT NOT NULL,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL
 );
@@ -29,9 +29,11 @@ CREATE TABLE "File" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL,
     "type" TEXT NOT NULL,
-    "content" TEXT NOT NULL,
+    "url" TEXT NOT NULL,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL
+    "updatedAt" DATETIME NOT NULL,
+    "userId" INTEGER NOT NULL,
+    CONSTRAINT "File_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable
@@ -40,6 +42,7 @@ CREATE TABLE "User" (
     "username" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
+    "avatar_url" TEXT NOT NULL DEFAULT '/images/dark.jpg',
     "roleId" INTEGER NOT NULL,
     "themeId" INTEGER NOT NULL,
     "languageId" INTEGER NOT NULL,
