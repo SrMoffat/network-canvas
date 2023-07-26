@@ -18,7 +18,7 @@ const emptyState = () => {
       </td>
       <td></td>
     </tr>
-  )
+  );
 };
 
 const TableRows = () => {
@@ -36,7 +36,7 @@ const TableRows = () => {
 
   return isEmpty
     ? emptyState()
-    : data?.map(file => <Row key={file?.id} file={file} />)
+    : data?.map(file => <Row key={file?.id} file={file} />);
 };
 
 const FilesList = () => {

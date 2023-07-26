@@ -92,8 +92,8 @@ export async function deleteFile(url: string): Promise<any> {
     const res = await fetch('/api/file', {
       method: 'DELETE',
       body: JSON.stringify({
-        url
-    }),
+        url,
+      }),
     });
     return await res.json();
   } catch (error) {

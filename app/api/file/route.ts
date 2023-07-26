@@ -1,14 +1,14 @@
 import { omit } from 'lodash';
 import { writeFile, unlink } from 'fs/promises';
 import { NextResponse, NextRequest } from 'next/server';
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "@/app/api/auth/config"
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '@/app/api/auth/config';
 
 import { prisma, uploadFile } from '@/lib';
 
 export async function POST(request: NextRequest) {
   const data = await request.formData();
-  const session = await getServerSession(authOptions)
+  const session = await getServerSession(authOptions);
   const file: File | null = data.get('file') as unknown as File;
   if (!file) {
     // TODO: Return proper errors
@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
       user: {
         // Get user uploading file
         connect: {
-          email: session?.user?.email as string
+          email: session?.user?.email as string,
         },
       },
       url: uploadResult as string,
@@ -57,7 +57,7 @@ export async function DELETE(req: NextRequest) {
   const file = await prisma.file.delete({
     where: {
       url: body?.url,
-    }
+    },
   });
   // TODO: Also delete file in Cloudinary
   return NextResponse.json({ data: file });
