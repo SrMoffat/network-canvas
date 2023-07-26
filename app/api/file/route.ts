@@ -59,5 +59,6 @@ export async function DELETE(req: NextRequest) {
       url: body?.url,
     }
   });
+  // TODO: Also delete file in Cloudinary
   return NextResponse.json({ data: file });
 }

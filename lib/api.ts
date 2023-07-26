@@ -87,11 +87,13 @@ export async function uploadFile(data: FormData): Promise<any> {
     throw error;
   }
 };
-export async function deleteFile(fileUrl: string): Promise<any> {
+export async function deleteFile(url: string): Promise<any> {
   try {
     const res = await fetch('/api/file', {
       method: 'DELETE',
-      body: fileUrl,
+      body: JSON.stringify({
+        url
+    }),
     });
     return await res.json();
   } catch (error) {

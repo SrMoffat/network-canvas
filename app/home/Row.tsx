@@ -1,3 +1,5 @@
+'use client'
+import { useState } from 'react'
 import { parseISO, formatDistance, format } from 'date-fns';
 import { AiOutlineCloudDownload, AiOutlineDelete } from 'react-icons/ai';
 
@@ -24,19 +26,22 @@ const Uploaded = ({ uploadedAt }: { uploadedAt: string; }) =>
 
 
 const Actions = ({ fileUrl }: { fileUrl: string, fileName: string }) => {
+  const [isDeleting, setIsDeleting] = useState<boolean>(false);
   const handleDelete = async (url: string) => {
+    setIsDeleting(true);
     await deleteFile(url)
+    setIsDeleting(false);
   }
   return (
     <td>
       <a target="_blank" referrerPolicy="no-referrer" href={fileUrl} className="btn mr-2">
         <AiOutlineCloudDownload size="20" />
       </a>
-      {/* <button className="btn mr-2" onClick={() => handleDownload(fileUrl)}>
-        <AiOutlineCloudDownload size="20" />
-      </button> */}
       <button className="btn mr-2">
-        <AiOutlineDelete size="20" style={{ color: 'red' }} onClick={() => handleDelete(fileUrl)} />
+        {isDeleting ? <span className="loading loading-spinner"></span> : (
+          <AiOutlineDelete size="20" style={{ color: 'red' }} onClick={() => handleDelete(fileUrl)} />
+
+        )}
       </button>
     </td>
   )
