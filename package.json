@@ -8,7 +8,10 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
+    "db:setup": "yarn db:delete && yarn db:migrate && yarn db:seed",
     "db:seed": "npx ts-node lib/seed.ts",
+    "db:delete": "rm prisma/dev.db",
+    "db:migrate": "npx prisma migrate dev",
     "prisma:format": "npx prisma format",
     "prisma:studio": "npx prisma studio",
     "prisma:migrate:deploy": "npx prisma migrate deploy"

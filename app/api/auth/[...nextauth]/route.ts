@@ -49,6 +49,7 @@ const handler = NextAuth({
         token.themeName = defaultTheme?.name;
         token.themeId = defaultTheme?.id;
       }
+      console.log("JWT", token)
       return token;
     },
     async session({ session, token }) {
@@ -66,6 +67,10 @@ const handler = NextAuth({
       session.user.themeName = token.themeName;
       // @ts-ignore
       session.user.themeId = token.themeId;
+
+      // TODO: Insert user in DB
+      // const userData = {};
+      console.log("Session", session)
       return session;
     },
   },

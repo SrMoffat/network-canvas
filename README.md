@@ -1,5 +1,9 @@
 ## Network Canvas
 
+1. Clone repo
+2. Setup DB `yarn db:setup` (Removes existing DB, runs migrations to create a new clean one, runs seed to insert config data)
+
+
 ### Timebox
 Up to 37.5 hours; a typical work week.
 
