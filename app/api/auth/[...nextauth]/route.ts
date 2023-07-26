@@ -69,17 +69,17 @@ const handler = NextAuth({
         session.user.themeName = token.themeName;
         // @ts-ignore
         session.user.themeId = token.themeId;
-        const user = pick(session?.user, ['name', 'email', 'image'])
+        const user = pick(session?.user, ['name', 'email', 'image']);
         const userDetails = {
           email: user.email,
           username: user.name,
           password: user.email,
-          avatar_url: user.image
+          avatar_url: user.image,
         };
-        await createNewUser(userDetails)
+        await createNewUser(userDetails);
         return session;
       } catch (error) {
-        return session
+        return session;
       }
     },
   },
