@@ -16,6 +16,10 @@ export async function POST(request: NextRequest) {
   const path = `./${file.name}`
   const decoder = new TextDecoder('utf-8');
   const jsonString = decoder.decode(buffer);
+
+  // TODO: Send file to Cloudinary
+  // TODO: Save URL in DB
+
   await writeFile(path, buffer)
   const newFile = await prisma.file.create({
     data: {
