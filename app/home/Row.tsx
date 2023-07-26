@@ -22,15 +22,24 @@ const Uploaded = ({ uploadedAt }: { uploadedAt: string; }) =>
   </td>;
 
 
-const Actions = () =>
-  <td>
-    <button className="btn mr-2">
-      <AiOutlineCloudDownload size="20" />
-    </button>
-    <button className="btn mr-2">
-      <AiOutlineDelete size="20" style={{ color: 'red' }} />
-    </button>
-  </td>;
+const Actions = ({ fileUrl }: { fileUrl: string }) => {
+  const handleDownload = (url: string) => {
+    console.log("Download", url)
+  }
+  const handleDelete = (url: string) => {
+    console.log("Delete", url)
+  }
+  return (
+    <td>
+      <button className="btn mr-2" onClick={() => handleDownload(fileUrl)}>
+        <AiOutlineCloudDownload size="20" />
+      </button>
+      <button className="btn mr-2">
+        <AiOutlineDelete size="20" style={{ color: 'red' }} onClick={() => handleDelete(fileUrl)} />
+      </button>
+    </td>
+  )
+};
 
 
 const FileEntry = ({ file }: { file: File }) => {
@@ -39,7 +48,7 @@ const FileEntry = ({ file }: { file: File }) => {
     <tr className="hover">
       <FileName fileName={file?.name} size={displaySize} />
       <Uploaded uploadedAt={file?.createdAt} />
-      <Actions />
+      <Actions fileUrl={file?.url} />
     </tr>
   );
 };
